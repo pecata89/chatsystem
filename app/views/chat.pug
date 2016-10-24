@@ -1,0 +1,114 @@
+div#chatBody(data-spy="scroll", data-target="#chatMessages")
+    .wel.well-lg.bg-primary
+        span#currentRoomName
+            | #{currentRoom.roomName}
+        br
+        span#currentRoomId.hidden
+            | #{currentRoom._id}
+    div#chatMessages
+        div.col-xs-12.messagesElement
+            - if (!currentRoom)
+                - if (!currentUser)
+                    .alert.alert-warning.alert-dismissible(role='alert')
+                        button.close(type='button', data-dismiss='alert', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        strong Warning!
+                        br
+                        |  You need to be sign in to create a room
+
+                    .alert.alert-danger.alert-dismissible(role='alert')
+                        button.close(type='button', data-dismiss='alert', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        strong Oh Snap!
+                        br
+                        |  Sign in to create the first chat room
+                - else
+                    .alert.alert-danger.alert-dismissible(role='alert')
+                        button.close(type='button', data-dismiss='alert', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        strong Reminder!
+                        br
+                        |  Create the first chat room
+            - else
+                each val,index in messages
+                    - if (messages[index].roomId._id == currentRoom._id)
+                            table.table.bg-info.table-condensed
+                                thead
+                                    tr
+                                        th
+                                            span.glyphicon.glyphicon-user &nbsp;
+                                            | #{messages[index].userId.username}
+                                tbody
+                                    tr
+                                        td
+                                            span.glyphicon.glyphicon-hand-right &nbsp;
+                                            | #{messages[index].message}
+
+
+                                            //div(class="btn-group")
+                                                button(class="btn btn-info btn-xs dropdown-toggle", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                                                    span(class="caret")
+                                                ul(class="dropdown-menu")
+                                                    li
+                                                        a(href="#")
+                                                            | EDIT
+                                                    li
+                                                        a(href="#")
+                                                            | DELETE
+
+
+        //div(class="col-xs-12")
+            div(class="pull-right")
+                table(class="table bg-success")
+                    tr
+                        td
+                            span(class="glyphicon glyphicon-hand-right")
+                        td
+                            | Hey. Man.
+                        td
+                            //div(class="btn-group")
+                                button(class="btn btn-info btn-xs dropdown-toggle", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                                    span(class="caret")
+                                ul(class="dropdown-menu")
+                                    li
+                                        a(href="#")
+                                            | EDIT
+                                    li
+                                        a(href="#")
+                                            | DELETE
+
+    - if (currentRoom && currentUser)
+        div(class="col-lg-12 message-box")
+            form#messageForm
+                //(action="/" + currentRoom._id + "/message", method="post")
+                div(class="input-group")
+                    //input#messageUser.hidden(value="" + currentUser._id + "")
+                    //input#messageRoom.hidden(value="" + currentRoom._id + "")
+                    input#messageContent.form-control(type="text", name="message", aria-label="chat-message" autofocus)
+                    div(class="input-group-btn")
+                        button#sendMessage(class="btn btn-info", type="submit")
+                            span(class="glyphicon glyphicon-console", aria-hidden="true")
+                            | &nbsp;SEND&nbsp;MESSAGE
+                        //button(type="button", class="btn btn-default dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="true")
+                            span(class="caret")
+                            span(class="sr-only")
+                                | Toggle Dropdown
+
+                        //ul(class="dropdown-menu dropdown-menu-right")
+                            li
+                                a(href="#")
+                                    | BOLD
+                            li
+                                a(href="#")
+                                    | ITALIC
+                            li
+                                a(href="#")
+                                    | EMOTICONS
+                            li(role="separator", class="divider")
+                            li
+                                a(href="#")
+                                    | ATTACH AN IMAGE
+                            li(class="bg-danger")
+                                a(href="#")
+                                    span(class="glyphicon glyphicon-sound-5-1")
+                                    | &nbsp; VOICE MESSAGE

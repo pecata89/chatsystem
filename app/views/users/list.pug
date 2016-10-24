@@ -1,0 +1,29 @@
+table.table.text-center
+    thead
+        tr
+            th.text-center=usersListTitle
+    tbody
+        tr
+            td
+                - if (Object.keys(users).length >= 1)
+
+                    each val,index in users
+                            - if (currentUser.username == users[index].username)
+                                a.btn.btn-xs.bg-primary.xs-margin.text-uppercase(href="#")
+                                    | #{users[index].username}
+
+                            - else
+                                a.btn.btn-xs.bg-info.xs-margin.text-uppercase(href="#")
+                                    | #{users[index].username}
+
+                - else
+                    .alert.alert-warning.alert-dismissible.text-left(role='alert')
+                        button.close(type='button', data-dismiss='alert', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        strong Warning!
+                        br
+                        |  No users registered
+    tfoot
+        tr
+            td
+                | SEE ALL MEMBERS

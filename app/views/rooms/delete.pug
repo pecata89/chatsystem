@@ -1,0 +1,28 @@
+// Modal
+#deleteRoomModal.modal.fade.bs-example-modal-xs(tabindex='-1', role='dialog', aria-labelledby='deletingRoom')
+    form.form-horizontal(action="/room/delete/" + currentRoom._id, method="DELETE", role="form")
+        .modal-dialog.modal-xs(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#myModalLabel.modal-title Delete Room
+                .modal-body
+                    .form-group
+                        label.col-sm-4.control-label Room Name
+                        .col-sm-8
+                            p.form-control-static=currentRoom.roomName
+                    .form-group
+                        label.col-sm-4.control-label Room ID
+                        .col-sm-8
+                            p.form-control-static=currentRoom._id
+
+                    .form-group
+                        label.col-sm-4.control-label by
+                        .col-sm-8
+                            p.form-control-static
+                                | #{currentRoom.creator.username}
+
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-danger(type='submit') Delete Room

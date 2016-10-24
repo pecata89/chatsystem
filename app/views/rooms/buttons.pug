@@ -1,0 +1,12 @@
+// Button trigger modal
+.padding-middle
+    button.btn.btn-success.text-uppercase(type='button', data-toggle='modal', data-target='#createRoomModal')
+        | create room
+- if (currentRoom)
+    - if (currentRoom.creator._id == currentUser.id)
+        .padding-middle
+            button.btn.btn-warning.btn-xs.text-uppercase(type='button', data-toggle='modal', data-target='#editRoomModal')
+                | edit room
+        .padding-middle
+            button.btn.btn-danger.btn-xs.text-uppercase(type='button', data-toggle='modal', data-target='#deleteRoomModal')
+                | delete room

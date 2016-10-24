@@ -1,0 +1,53 @@
+* {
+  margin: 0px;
+  padding: 0px; }
+
+body {
+  font-weight: normal;
+  font-family: "Verdana", Helvetica, Arial, sans-serif; }
+
+.message-options {
+  margin: -20px 0px 0px 0px; }
+
+.xs-margin {
+  margin: 3px 3px 3px 3px;
+  display: block;
+  padding: 0px;
+  font-size: 15px; }
+
+.xs-margin-chat {
+  margin: 3px 3px 3px 3px;
+  display: block;
+  padding: 8px 10px;
+  font-size: 13px;
+  text-align: left; }
+
+a.xs-margin-chat {
+  text-decoration: none; }
+
+#chatMessages {
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 0px 0px 0px;
+  margin: 20px 0px 30px 0px; }
+
+.message-box {
+  padding: 0px 0px 30px 0px; }
+
+table#indexMainTable {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+  background-color: indianred; }
+
+.h10 {
+  font-size: 11px;
+  padding: 0px;
+  margin: -2px 0px; }
+
+.padding-middle {
+  padding: 7px; }
+
+/*# sourceMappingURL=style.css.map */

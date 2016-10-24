@@ -1,0 +1,28 @@
+- if (currentRoom)
+    table.table.text-center
+        thead
+            tr
+                th.text-center=roomsListTitle
+        tbody
+            tr
+                td
+                    each val,index in rooms
+                        - if (currentRoom._id == rooms[index]._id)
+                            .bg-primary.xs-margin-chat
+                                span.glyphicon.glyphicon-resize-full
+                                    | &nbsp;
+                                | #{rooms[index].roomName}
+
+                        - else
+                            a.bg-info.xs-margin-chat(href="/" + rooms[index].id + "")
+                                span.glyphicon.glyphicon-resize-small
+                                    | &nbsp;
+                                | #{rooms[index].roomName}
+                        .h10.text-info.hidden
+                            | #{rooms[index].id}
+                        .h10.text-info.hidden
+                            | #{rooms[index].creator.username}
+        tfoot
+            tr
+                td
+                    | SEE ALL CHAT ROOMS

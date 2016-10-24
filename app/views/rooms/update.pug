@@ -1,0 +1,23 @@
+// Modal
+#editRoomModal.modal.fade.bs-example-modal-md(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    form.form-horizontal(action="/room/update/" + currentRoom._id, method="post", role="form")
+        .modal-dialog.modal-md(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#myModalLabel.modal-title Update room
+                .modal-body
+                    .form-group
+                        label.col-sm-4.control-label(for='roomName') Room Name
+                        .col-sm-8
+                            input#roomName.form-control(type='text', name="roomName", value='' + currentRoom.roomName + '', placeholder="")
+                    .form-group
+                        label.col-sm-4.control-label by
+                        .col-sm-8
+                            p.form-control-static
+                                | #{currentRoom.creator.username}
+
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-primary(type='submit') Update room

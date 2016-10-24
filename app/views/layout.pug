@@ -1,0 +1,121 @@
+doctype html
+html
+    head
+        title
+            | express chat system
+        include includes/stylesheets
+    body
+        .container
+            include includes/menu
+
+            .row
+                .col-lg-12
+                    //.jumbotron
+                        h1
+                            | Hello&nbsp;
+                            - if (currentUser)
+                                | #{currentUser.username}
+                            - else
+                                | visitor!
+                            p
+                                | Welcome to this new and shiny modified bootstrap and NodeJS chat system.
+
+                    // LEFT PANEL FOR THE CHAT
+                    // CONTAINS THE MEMBERS LIST
+                    div(class="col-lg-3")
+                        //include users/list
+                        - if (!currentUser)
+                            include users/signin
+                        - else
+                            table.table.table-condensed.text-center.table-striped
+                                thead
+                                    tr
+                                        th.text-center USERS' INFO
+                                tbody
+                                    tr
+                                        td
+                                            h6 Full name
+                                            h4
+                                                | #{currentUser.fullName}
+                                    tr
+                                        td
+                                            h6 Username
+                                            h4
+                                                | #{currentUser.username}
+                                    tr
+                                        td
+                                            h6 User ID
+                                            h6
+                                                | #{currentUser.id}
+                                tfoot
+                                    tr
+                                        td.text-center
+                                            a(href="/signout")
+                                                | SIGN OUT
+                        include users/list
+
+
+                    // MIDDLE PANEL FOR THE CHAT
+                    // CONTAINS THE CHAT MESSAGES
+                    .col-lg-6
+                        - if (url == "/")
+                            include chat
+                        - else if (url == "/signup")
+                            include users/signup
+
+                    // RIGHT PANEL FOR THE CHAT
+                    // CONTAINS CHAT ROOMS INFO
+                    .col-md-3.push-right.clearfix
+                        - if (currentRoom)
+                            include rooms/list
+                        //div(class="panel panel-success")
+                            div(class="panel-heading")
+                                div(class="panel-title")
+                                    | CHAT ROOMS
+
+                            div(class="panel-body")
+                                table(class="table")
+                                    tr(class="bg-info")
+                                        td
+                                            span(class="glyphicon glyphicon-resize-full")
+                                                | &nbsp;
+                                            a(href="#")
+                                                | CHAT ROOM ONE
+                                    tr(class="bg-danger")
+                                        td
+                                            span(class="glyphicon glyphicon-resize-small")
+                                                | &nbsp;
+                                            a(href="#")
+                                                | CHAT ROOM TWO
+                                    tr(class="bg-info")
+                                        td
+                                            span(class="glyphicon glyphicon-resize-full")
+                                                | &nbsp;
+                                            a(href="#")
+                                                | CHAT ROOM THREE
+                                        tr(class="bg-info")
+                                            td
+                                                span(class="glyphicon glyphicon-resize-full")
+                                                    | &nbsp;
+                                                a(href="#")
+                                                    | CHAT ROOM FOUR
+
+                            div(class="panel-footer text-center")
+                                | SEE ALL CHAT ROOMS
+
+                        .row
+                            .col-lg-12.text-center
+                                - if (currentUser)
+                                    include rooms/buttons
+
+            div(class="well well-lg")
+                | Chat system made in random Frameworks lecture classes.
+
+        include includes/scripts
+        // MODALS
+        - if (currentUser)
+            include rooms/create
+            - if (currentRoom)
+                - if (currentUser.id == currentRoom.creator._id)
+                    include rooms/delete
+                    include rooms/update

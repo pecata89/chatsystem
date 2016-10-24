@@ -1,0 +1,18 @@
+{
+  "name": "chatsystem",
+  "description": "school chat system",
+  "main": "server.js",
+  "authors": [
+    "Petko Petkov"
+  ],
+  "license": "ISC",
+  "homepage": "http://localhost:8000/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,30 @@
+form(action="/signup", method="post")
+    .panel.panel-default
+        .panel-heading
+            .panel-title=signupTitle
+        .panel-body
+            each val,index in messagesSignUp
+                .flash.alert.alert-danger=messagesSignUp[index]
+            .form-group
+                label(for="firstName")
+                    | First Name:
+                input(type="text", name="firstName", id="firstName", class="form-control")
+            .form-group
+                label(for="lastName")
+                    | Last Name:
+                input(type="text", name="lastName", id="lastName", class="form-control")
+            .form-group
+                label(for="email")
+                    | Email:
+                input(type="text", name="email", id="email", class="form-control")
+            .form-group
+                label(for="username")
+                    | Username:
+                input(type="text", name="username", id="username", class="form-control")
+            .form-group
+                label(for="password")
+                    | Password:
+                input(type="password", name="password", id="password", class="form-control")
+        .panel-footer.text-right
+            button.btn.btn-primary(type="submit")
+                | Sign Up

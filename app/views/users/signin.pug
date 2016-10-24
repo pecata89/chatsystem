@@ -1,0 +1,18 @@
+form(action="/", method="post")
+    .panel.panel-default
+        .panel-heading
+            .panel-title.text-center=signinTitle
+        .panel-body
+            each val,index in messagesSignIn
+                .flash.alert.alert-danger=messagesSignIn[index]
+            .form-group
+                label(for="username")
+                    | Username:
+                input.form-control(type="text", name="username", id="username", autofocus)
+            .form-group
+                label(for="password")
+                    | Password:
+                input(type="password", name="password", id="password", class="form-control")
+        .panel-footer.text-right
+            button(type="submit", class="btn btn-primary")
+                | Sign In
